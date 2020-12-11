@@ -10,7 +10,25 @@ class BTree:
   def __init__(self, root):
     self.root = root
 
+  # Main insert
   def insert(self, value):
+    self.insert_rec(self.root, value)
+
+  # Recursive insert
+  def insert_rec(self, node, value):
+    if (value < node.value):
+      if (node.left is not None):
+          self.insert_rec(node.left, value)
+      else:
+          node.left = Node(value)
+    else:
+      if (node.right is not None):
+          self.insert_rec(node.right, value)
+      else:
+          node.right = Node(value)
+
+  # Iterative insert
+  def insert_iter(self, value):
     cnode = self.root
     height = self.find_height(cnode)
     
