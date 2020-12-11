@@ -53,12 +53,7 @@ class BTree:
     lheight = self.find_height(node.left) 
     rheight = self.find_height(node.right)
 
-    if(lheight > rheight):
-      height = 1 + lheight
-    else:
-      height = 1 + rheight
-      
-    return height
+    return 1 + max(lheight, rheight)
 
   def height(self):
     return self.find_height(self.root)
