@@ -11,8 +11,12 @@ class BTree:
     self.root = root
 
   # Main insert
-  def insert(self, value):
-    self.insert_rec(self.root, value)
+  def insert(self, values):
+    if(isinstance(values, int)):
+        self.insert_rec(self.root, values)
+    elif(isinstance(values, list)):
+        for value in values:
+            self.insert_rec(self.root, value)
 
   # Recursive insert
   def insert_rec(self, node, value):
@@ -63,8 +67,7 @@ class BTree:
 def main():
   root = Node(0)
   tree = BTree(root)
-  tree.insert(1)
-  tree.insert(-1)
+  tree.insert([2, -1, 1, 5, -5])
   print(tree.height())
 
 if __name__ == "__main__":
